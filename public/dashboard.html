@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Events - Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">📸 SnapEvent</a>
+                <div style="display: flex; align-items: center; gap: var(--space-4);">
+                    <span id="photographerName" style="color: var(--color-gray-700);"></span>
+                    <button id="logoutButton" class="btn btn-secondary btn-sm">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-8); flex-wrap: wrap; gap: var(--space-4);">
+                <h1>My Events</h1>
+                <a href="/create-event.html" class="btn btn-primary">+ Create New Event</a>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-overlay">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading events...</div>
+            </div>
+
+            <!-- Events Grid -->
+            <div id="eventsGrid" class="grid grid-cols-1 grid-cols-md-2 hidden">
+                <!-- Events will be inserted here dynamically -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state hidden">
+                <div class="empty-state-icon">📸</div>
+                <h2 class="empty-state-title">No events yet</h2>
+                <p class="empty-state-text">Create your first event to get started</p>
+                <a href="/create-event.html" class="btn btn-primary btn-lg">Create Event</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code Modal -->
+    <div id="qrModal" class="hidden"
+        style="position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.75); align-items: center; justify-content: center; z-index: 1000; padding: var(--space-4);">
+        <div class="card" style="max-width: 500px; width: 100%;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                <h3 id="qrModalTitle" style="margin: 0;">QR Code</h3>
+                <button id="closeQrModal" class="btn btn-secondary btn-sm">✕</button>
+            </div>
+            <div class="text-center">
+                <img id="qrCodeImage" src="" alt="Event QR Code"
+                    style="max-width: 100%; border-radius: var(--radius-md);">
+                <p style="margin-top: var(--space-4); color: var(--color-gray-600);">Print and place this QR code at
+                    your event</p>
+                <button id="downloadQrButton" class="btn btn-primary btn-block mt-4">Download QR Code</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+
+</html>

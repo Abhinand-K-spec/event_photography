@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Photos</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">📸 SnapEvent</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container container-sm">
+            <!-- Event Title -->
+            <div class="text-center mb-8">
+                <h1 id="eventTitle" style="margin-bottom: var(--space-2);">Loading...</h1>
+                <p id="eventDate" style="color: var(--color-gray-600);"></p>
+            </div>
+
+            <!-- Selfie Upload Section -->
+            <div id="uploadSection" class="card">
+                <div class="text-center mb-6">
+                    <h2 class="mb-4">Upload a Clear Selfie to Find Your Photos</h2>
+                    <p style="color: var(--color-gray-600);">Our system will match your selfie with event photos</p>
+                </div>
+
+                <!-- Selfie Preview -->
+                <div class="selfie-upload-container">
+                    <div class="selfie-preview" id="selfiePreview">
+                        <span class="selfie-placeholder">📷</span>
+                    </div>
+                    <input type="file" id="selfieInput" class="file-input" accept="image/*" capture="user">
+                    <button id="uploadButton" class="btn btn-secondary"
+                        onclick="document.getElementById('selfieInput').click()">
+                        Choose Selfie
+                    </button>
+                    <p
+                        style="color: var(--color-gray-500); font-size: var(--font-size-sm); margin-top: var(--space-4);">
+                        Make sure your face is clearly visible
+                    </p>
+                </div>
+
+                <button id="findPhotosButton" class="btn btn-primary btn-block btn-lg mt-6" disabled>
+                    Find My Photos
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="card hidden">
+                <div class="loading-overlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Finding your photos...</div>
+                    <p
+                        style="color: var(--color-gray-500); font-size: var(--font-size-sm); margin-top: var(--space-2);">
+                        This may take a moment
+                    </p>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="hidden">
+                <h2 class="text-center mb-6" id="resultsTitle">We found your photos!</h2>
+
+                <!-- Photo Gallery -->
+                <div id="photoGallery" class="photo-gallery">
+                    <!-- Photos will be inserted here -->
+                </div>
+
+                <!-- Try Again Button -->
+                <div class="text-center mt-8">
+                    <button id="tryAgainButton" class="btn btn-secondary">Upload Another Selfie</button>
+                </div>
+            </div>
+
+            <!-- Empty Results State -->
+            <div id="emptyResults" class="empty-state hidden">
+                <div class="empty-state-icon">😔</div>
+                <h2 class="empty-state-title">No Photos Found</h2>
+                <p class="empty-state-text">We couldn't find any matching photos. Try uploading a clearer selfie.</p>
+                <button id="retryButton" class="btn btn-primary">Try Again</button>
+            </div>
+
+            <!-- Privacy Note -->
+            <div class="text-center mt-8" style="color: var(--color-gray-500); font-size: var(--font-size-sm);">
+                🔒 Your selfie is used only to find your photos and will be deleted automatically.
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/event.js"></script>
+</body>
+
+</html>

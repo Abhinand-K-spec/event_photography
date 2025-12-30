@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">📸 SnapEvent</a>
+                <a href="/dashboard.html" class="btn btn-secondary btn-sm">← Back to Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container container-sm">
+            <!-- Create Event Form -->
+            <div id="createEventForm" class="card">
+                <div class="card-header text-center">
+                    <h1 class="card-title">Create New Event</h1>
+                    <p class="mb-0" style="color: var(--color-gray-600);">Set up your event and generate a QR code</p>
+                </div>
+
+                <div id="alertMessage" class="hidden"></div>
+
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label for="eventName" class="form-label">Event Name</label>
+                        <input type="text" id="eventName" class="form-input"
+                            placeholder="e.g., Sarah's Wedding, Tech Conference 2025" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate" class="form-label">Event Date</label>
+                        <input type="date" id="eventDate" class="form-input" required>
+                    </div>
+                    <button type="submit" id="createButton" class="btn btn-primary btn-block btn-lg">
+                        Create Event
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success State with QR Code -->
+            <div id="successState" class="card hidden">
+                <div class="text-center">
+                    <div style="font-size: var(--font-size-5xl); margin-bottom: var(--space-4);">✅</div>
+                    <h2 style="color: var(--color-success); margin-bottom: var(--space-4);">Event Created Successfully!
+                    </h2>
+
+                    <div
+                        style="background-color: var(--color-gray-50); padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+                        <h3 id="createdEventName" style="margin-bottom: var(--space-4);"></h3>
+                        <img id="qrCodeImage" src="" alt="Event QR Code"
+                            style="max-width: 300px; width: 100%; border-radius: var(--radius-md); margin: 0 auto; display: block;">
+                    </div>
+
+                    <p style="color: var(--color-gray-600); margin-bottom: var(--space-6);">Print and place this QR code
+                        at your event venue</p>
+
+                    <div
+                        style="background-color: var(--color-gray-100); padding: var(--space-4); border-radius: var(--radius-md); margin-bottom: var(--space-6);">
+                        <label class="form-label" style="margin-bottom: var(--space-2);">Event Link</label>
+                        <div style="display: flex; gap: var(--space-2);">
+                            <input type="text" id="eventUrl" class="form-input" readonly style="flex: 1;">
+                            <button id="copyLinkButton" class="btn btn-secondary">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 grid-cols-md-2" style="gap: var(--space-3);">
+                        <button id="downloadQrButton" class="btn btn-primary">Download QR Code</button>
+                        <a href="/dashboard.html" class="btn btn-secondary">Go to Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/create-event.js"></script>
+</body>
+
+</html>
